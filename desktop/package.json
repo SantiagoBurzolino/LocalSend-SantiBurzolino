@@ -1,0 +1,38 @@
+{
+  "name": "localsend-desktop",
+  "version": "1.0.0",
+  "description": "LocalSend Clone - Transferencia de archivos local",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev:vite": "vite",
+    "dev:electron": "wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .",
+    "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
+    "build": "vite build",
+    "dist": "npm run build && electron-builder"
+  },
+  "build": {
+    "appId": "com.localsend.desktop",
+    "productName": "LocalSend",
+    "files": ["dist/**/*", "electron/**/*"],
+    "linux": {
+      "target": "AppImage"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "dependencies": {
+    "electron-store": "^10.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.5.2",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^36.4.0",
+    "electron-builder": "^26.0.12",
+    "vite": "^8.0.0",
+    "wait-on": "^8.0.3"
+  }
+}

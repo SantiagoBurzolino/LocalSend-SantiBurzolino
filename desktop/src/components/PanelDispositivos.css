@@ -1,0 +1,110 @@
+/* src/components/PanelDispositivos.css */
+
+.panel-dispositivos {
+  background-color: var(--color-superficie);
+  border-right: 1px solid var(--color-borde);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.panel-titulo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.panel-contador {
+  background-color: var(--color-acento);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+/* Estado vacío */
+.estado-vacio {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px 20px;
+  color: var(--color-texto-secundario);
+  text-align: center;
+  font-size: 14px;
+}
+
+.estado-vacio-icono {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.estado-vacio-hint {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* Lista de dispositivos */
+.lista-dispositivos {
+  list-style: none;
+  padding: 8px;
+}
+
+.item-dispositivo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.item-dispositivo:hover {
+  background-color: var(--color-superficie-2);
+}
+
+.dispositivo-icono {
+  font-size: 26px;
+}
+
+.dispositivo-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dispositivo-alias {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+.dispositivo-ip {
+  font-size: 11px;
+  color: var(--color-texto-secundario);
+}
+
+.dispositivo-estado {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dispositivo-estado.activo {
+  background-color: var(--color-exito);
+}

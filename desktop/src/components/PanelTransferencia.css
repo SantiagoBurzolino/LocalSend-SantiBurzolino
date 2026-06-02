@@ -1,0 +1,94 @@
+/* src/components/PanelTransferencia.css */
+
+.panel-transferencia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 40px;
+  background-color: var(--color-fondo);
+}
+
+/* Zona drop normal */
+.zona-drop {
+  width: 100%;
+  max-width: 500px;
+  min-height: 280px;
+  border: 2px dashed var(--color-borde);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 40px;
+}
+
+/* Zona drop cuando hay un archivo encima */
+.zona-drop--activa {
+  border-color: var(--color-acento);
+  background-color: rgba(99, 102, 241, 0.08);
+  transform: scale(1.01);
+}
+
+.zona-drop-icono {
+  font-size: 52px;
+}
+
+.zona-drop-texto {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+.zona-drop-hint {
+  font-size: 13px;
+  color: var(--color-texto-secundario);
+  text-align: center;
+}
+
+/* Barra de progreso */
+.contenedor-progreso {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progreso-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--color-texto);
+}
+
+.barra-progreso-fondo {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-superficie-2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barra-progreso-relleno {
+  height: 100%;
+  background-color: var(--color-acento);
+  border-radius: 4px;
+  /* Transición suave para que la barra no "salte" */
+  transition: width 0.3s ease;
+}
+
+.progreso-detalle {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-texto-secundario);
+}

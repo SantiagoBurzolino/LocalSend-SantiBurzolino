@@ -1,0 +1,48 @@
+/* src/index.css */
+/* Reset básico y variables de color para toda la app */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Paleta de colores principal */
+  --color-fondo: #0f0f13;
+  --color-superficie: #1a1a24;
+  --color-superficie-2: #24243a;
+  --color-borde: #2e2e4a;
+  --color-acento: #6366f1;
+  --color-acento-hover: #4f46e5;
+  --color-exito: #22c55e;
+  --color-error: #ef4444;
+  --color-texto: #f1f5f9;
+  --color-texto-secundario: #94a3b8;
+
+  /* Tipografía */
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 16px;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+
+  /* Evita que el texto se seleccione al hacer drag */
+  user-select: none;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-fondo);
+}
+
+/* Scrollbar personalizada para que combine con el tema */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-superficie);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-borde);
+  border-radius: 3px;
+}
