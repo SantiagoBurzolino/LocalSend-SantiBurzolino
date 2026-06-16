@@ -32,35 +32,39 @@ export function useDescubrimiento() {
 
       const ip = await obtenerIPLocal()
       setIpLocal(ip)
+      
 
       // Calculamos el rango de IPs a escanear
       // Si nuestra IP es 10.56.2.21, escaneamos 10.56.2.1 a 10.56.2.20
       // y 10.56.2.22 en adelante
-      const partes = ip.split('.')
-      const baseIP = `${partes[0]}.${partes[1]}.${partes[2]}`
+const partes = ip.split('.')
+      const baseIP = `${partes[0]}.${partes[1]}`
 
       const promesas = []
 
-      // Escaneamos las primeras 30 IPs del segmento
-      for (let i = 1; i <= 30; i++) {
-        const ipObjetivo = `${baseIP}.${i}`
-        if (ipObjetivo === ip) continue // saltamos nuestra propia IP
+      // Bucle externo: Escaneamos las subredes del 0 al 10 (ajustá esto según tu red)
+      for (let subred = 0; subred <= 10; subred++) {
+        
+        // Bucle interno: Escaneamos las IPs de cada subred
+        for (let i = 1; i <= 99; i++) {
+          const ipObjetivo = `${baseIP}.${subred}.${i}`
+          if (ipObjetivo === ip) continue // saltamos nuestra propia IP
 
-        // Intentamos conectar al puerto 53317 de cada IP
-        // Si responde, es nuestro desktop con LocalSend corriendo
-        promesas.push(
-          fetch(`http://${ipObjetivo}:${PUERTO}/info`, {
-            signal: AbortSignal.timeout(800), // timeout de 800ms por IP
-          })
-          .then(async (res) => {
-            if (res.ok) {
-              const datos = await res.json()
-              return { ip: ipObjetivo, ...datos }
-            }
-            return null
-          })
-          .catch(() => null) // si no responde, retornamos null
-        )
+          // Intentamos conectar al puerto 53317 de cada IP
+          promesas.push(
+            fetch(`http://${ipObjetivo}:${PUERTO}/info`, {
+              signal: AbortSignal.timeout(800),
+            })
+            .then(async (res) => {
+              if (res.ok) {
+                const datos = await res.json()
+                return { ip: ipObjetivo, ...datos }
+              }
+              return null
+            })
+            .catch(() => null)
+          )
+        }
       }
 
       // Corremos todos los scans en paralelo
