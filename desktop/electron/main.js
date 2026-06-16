@@ -9,7 +9,8 @@ const os   = require('os')
 // Puerto fijo igual que LocalSend original.
 // Todos los dispositivos de la red deben usar el mismo.
 const PUERTO = 53317
-const ALIAS_DISPOSITIVO = `PC-${os.hostname()}`
+const { generarAlias } = require('./generadorAlias')
+const ALIAS_DISPOSITIVO = generarAlias()
 
 // ─── Utilidad: obtener IP local ───────────────────────────────────────────────
 // Recorre todas las interfaces de red y devuelve la primera IPv4 no interna.
